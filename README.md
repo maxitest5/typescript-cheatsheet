@@ -36,9 +36,22 @@ function foo(arg : string) {
 ### Array
 
 ```tsx
-let ages: number[]
+let ages: number[]  // or let ages: Array<number>
 ages = [23, 54, 13, 65]
+```
 
+### QuerySelector
+
+```tsx
+// Single
+const div = document.querySelector('div')  // HTMLDivElement | null
+const span = document.querySelector('span')  // HTMLSpanElement | null
+
+const form = document.querySelector('form')  // HTMLFormElement | null
+form?.appendChild(cb)
+
+// Multiple
+const inputs = document.querySelectorAll('input')  //NodeListOf<HTMLInputElement>
 ```
 
 ### Custom type
