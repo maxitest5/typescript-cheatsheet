@@ -107,6 +107,11 @@ function otherFn(fn: SomeBasicFunction, base: number): number {
 ## Advanced
 
 ### Operators
+Ternary operator
+```tsx
+isMember ? '$2.00' : '$10.00'
+// Expected output: '$2.00' if isMember == true
+```
 Nullish coalescing operator
 ```tsx
 user?.verified ?? default_string
