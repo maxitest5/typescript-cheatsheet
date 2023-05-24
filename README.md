@@ -104,4 +104,34 @@ function otherFn(fn: SomeBasicFunction, base: number): number {
   return fn(base)
 }
 ```
+## Advanced
 
+### Operators
+Nullish coalescing operator
+```tsx
+user?.verified ?? default_string
+// Expected output: "default string" if user is not defined
+```
+
+### Unions
+Using `&`
+```tsx
+type Developper = {
+  name: string
+}
+
+type FrontEndDev = Developper & {
+  frontEndFramework: string
+}
+
+type BackEndDev = Developper & {
+  backEndFramework: string
+}
+
+type FullStackDev = FrontEndDev & BackEndDev
+```
+
+Using `interface`
+```tsx
+
+```
