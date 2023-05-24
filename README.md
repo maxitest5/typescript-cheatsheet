@@ -154,3 +154,15 @@ interface IBackEndDev extends IDevelopper {
 }
 interface IFullStackDev extends IBackEndDev, IFrontEndDev {}
 ```
+
+### Unknown props
+```tsx
+interface ClassRoom {
+  [key: string]: number
+}
+const classroom: ClassRoom = {
+  jack: 342,
+  sylvia: 342,
+  robert: 232,
+}
+```
