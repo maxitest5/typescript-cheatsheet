@@ -136,7 +136,21 @@ type BackEndDev = Developper & {
 type FullStackDev = FrontEndDev & BackEndDev
 ```
 
+Using `|`
+```tsx
+type StudentDev = FrontEndDev | BackEndDev | FullStackDev
+```
+
 Using `interface`
 ```tsx
-
+interface IDevelopper {
+  name: string
+}
+interface IFrontEndDev extends IDevelopper {
+  frontEndFramework: string
+}
+interface IBackEndDev extends IDevelopper {
+  backEndFramework: string
+}
+interface IFullStackDev extends IBackEndDev, IFrontEndDev {}
 ```
