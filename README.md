@@ -157,12 +157,17 @@ interface IFullStackDev extends IBackEndDev, IFrontEndDev {}
 
 ### Unknown props
 ```tsx
+type Student = {
+  id: number
+  note: string
+}
 interface ClassRoom {
-  [key: string]: number
+  [key: string]: Student
 }
 const classroom: ClassRoom = {
-  jack: 342,
-  sylvia: 342,
-  robert: 232,
+  jack: {'id': 342, 'note': '20/20'},
+  sylvia: {'id': 342, 'note': '14/20'},
+  robert: {'id': 232, 'note': '6/20'},
 }
+classroom.jack.note
 ```
