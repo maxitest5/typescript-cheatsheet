@@ -104,7 +104,57 @@ function otherFn(fn: SomeBasicFunction, base: number): number {
   return fn(base)
 }
 ```
-## Advanced
+## Classes
+
+```tsx
+class Game {
+  constructor(
+    public title: string,
+    public category: string,
+    readonly price: number,
+    protected pegi: string,
+    private hardware: string[],
+  ) {}
+  isPC() {
+    return this.hardware.includes('PC')
+  }
+  getDiscount(d: number) {
+    return this.price * d
+  }
+}
+
+class IphoneGame extends Game {
+  constructor(public title: string, public price: number, public esrb: string) {
+    super(title, 'Mobile', price, esrb.includes('AO') ? 'PEGI18' : '', [
+      'IOS',
+    ])
+  }
+  isAdult() {
+    return this.pegi.includes('PEGI18')
+  }
+}
+const adultGame = new IphoneGame('GTA6', 79.9, 'AO')
+displayText(
+  `Le jeu : ${adultGame.title} est pour adulte ? ${
+    adultGame.isAdult() ? ' oui' : 'non'
+  }`,
+)
+
+const fifa = new Game('Fifa', '', 79.9, '', ['PC', 'PS5', 'XBOX'])
+//fifa.price = 5
+displayText(
+  `Le jeu : ${fifa.title} est compatible pc ? ${fifa.isPC() ? ' oui' : 'non'}`,
+)
+const mario = new Game('Mario', '', 59.9, '', '', ['Wii'])
+//mario.hardware.push('PC') //compile error
+displayText(
+  `Le jeu : ${mario.title} est compatible pc ? ${
+    mario.isPC() ? ' oui' : 'non'
+  }`,
+)
+```
+
+## Other
 
 ### Operators
 Ternary operator
@@ -153,47 +203,6 @@ interface IBackEndDev extends IDevelopper {
   backEndFramework: string
 }
 interface IFullStackDev extends IBackEndDev, IFrontEndDev {}
-```
-
-### Classes
-```tsx
-class Game {
-  title: string
-  price: number
-  hardware: string[]
-  constructor(
-    public title: string,
-    readonly price: number,
-    private hardware: string[],
-  ) {
-    this.title = title
-    this.price = price
-    this.hardware = hardware
-  }
-  isPC() {
-    return this.hardware.includes('PC')
-  }
-  getDiscount(d: number) {
-    return this.price * d
-  }
-}
-
-class IphoneGame extends Game {
-  constructor(public title: public price: number, public esrb: string) {
-    super(title, 'Mobile', price, [
-      'IOS',
-    ])
-  }
-  isAdult() {
-    return this.pegi.includes('PEGI18')
-  }
-}
-const adultGame = new IphoneGame('GTA6', 79.9, 'AO')
-
-const fifa = new Game('Fifa', 79.9, ['PC', 'PS5', 'XBOX'])
-console.log(`Le jeu : ${fifa.title} est compatible pc ? ${fifa.isPC() ? ' oui' : 'non'}`,
-)
-const mario = new Game('Mario', 59.9, ['Wii'])
 ```
 
 ### Unknown props
