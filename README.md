@@ -155,6 +155,35 @@ interface IBackEndDev extends IDevelopper {
 interface IFullStackDev extends IBackEndDev, IFrontEndDev {}
 ```
 
+### Classes
+```tsx
+class Game {
+  title: string
+  price: number
+  hardware: string[]
+  constructor(
+    title: string,
+    price: number,
+    hardware: string[],
+  ) {
+    this.title = title
+    this.price = price
+    this.hardware = hardware
+  }
+  isPC() {
+    return this.hardware.includes('PC')
+  }
+  getDiscount(d: number) {
+    return this.price * d
+  }
+}
+
+const fifa = new Game('Fifa', 79.9, ['PC', 'PS5', 'XBOX'])
+console.log(`Le jeu : ${fifa.title} est compatible pc ? ${fifa.isPC() ? ' oui' : 'non'}`,
+)
+const mario = new Game('Mario', 59.9, ['Wii'])
+```
+
 ### Unknown props
 ```tsx
 type Student = {
