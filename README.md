@@ -162,9 +162,9 @@ class Game {
   price: number
   hardware: string[]
   constructor(
-    title: string,
-    price: number,
-    hardware: string[],
+    public title: string,
+    readonly price: number,
+    private hardware: string[],
   ) {
     this.title = title
     this.price = price
@@ -177,6 +177,18 @@ class Game {
     return this.price * d
   }
 }
+
+class IphoneGame extends Game {
+  constructor(public title: public price: number, public esrb: string) {
+    super(title, 'Mobile', price, [
+      'IOS',
+    ])
+  }
+  isAdult() {
+    return this.pegi.includes('PEGI18')
+  }
+}
+const adultGame = new IphoneGame('GTA6', 79.9, 'AO')
 
 const fifa = new Game('Fifa', 79.9, ['PC', 'PS5', 'XBOX'])
 console.log(`Le jeu : ${fifa.title} est compatible pc ? ${fifa.isPC() ? ' oui' : 'non'}`,
