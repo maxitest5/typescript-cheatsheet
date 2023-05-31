@@ -254,3 +254,25 @@ displayText(`${printBirthDay(2014, 9)}`)
 displayText(`${printBirthDay(2014)}`)
 ```
 
+### Partial (utility type)
+
+```tsx
+interface User {
+  name: string
+  adress: string
+}
+
+function updateUser(user: User, fieldsToUpdate: Partial<User>) {
+  return {...user, ...fieldsToUpdate}
+}
+
+const user1 = {
+  name: 'Mike',
+  adress: 'Paris',
+}
+
+const user2 = updateUser(user1, {
+  adress: 'Bali',
+})
+```
+
