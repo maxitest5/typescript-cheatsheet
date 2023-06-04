@@ -308,5 +308,48 @@ const MainContainer = ({children}: MainContainerProps) => {
 }
 export {MainContainer}
 ```
+### Prop types
 
+In `src\components\Card\Card.tsx`
+
+```tsx
+import {nftType} from '../../types/types'
+
+type CardProps = {
+  nft: nftType
+}
+
+const Card = ({nft}: CardProps) => {
+  return (
+    <section className="main-card">
+      <CardImage imgSrc={nft.img} />
+      <CardContent nft={nft} />
+    </section>
+  )
+}
+
+export {Card}
+```
+
+In `src\components\Card\CardContent.tsx`
+```tsx
+import {nftType} from '../../types/types'
+
+type CardContentProps = {
+  nft: nftType
+}
+
+const CardContent = ({nft}: CardContentProps) => {
+  const {title, description} = nft
+
+  return (
+    <div className="text-container">
+      <h1 className="title">{title}</h1>
+      <p className="description">{description}</p>
+      <CardCrypto nft={nft} />
+    </div>
+  )
+}
+export {CardContent}
+```
 
