@@ -276,3 +276,37 @@ const user2 = updateUser(user1, {
 })
 ```
 
+## React
+
+### Type children
+
+In `App.tsx`
+```tsx
+function App() {
+  return (
+    //@ts-ignore // TS ignore seulement pour l'exercice. error de compile
+    <MainContainer>
+      <Search />
+      <CardsContainer>
+        ...
+      </CardsContainer>
+      <Footer />
+    </MainContainer>
+  )
+}
+
+export {App}
+```
+In `src\components\Containers\MainContainer.tsx`
+```tsx
+type MainContainerProps = {
+  children: React.ReactNode
+}
+
+const MainContainer = ({children}: MainContainerProps) => {
+  return <main className="container">{children}</main>
+}
+export {MainContainer}
+```
+
+
