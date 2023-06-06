@@ -353,7 +353,38 @@ const CardContent = ({nft}: CardContentProps) => {
 }
 export {CardContent}
 ```
+### Event 
 
+In parent's component
+```tsx
+  const [nfts, setNfts] = React.useState<nftType[]>(nftsList)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    const filteredList = nftsList.filter(nft => {
+      return (
+        nft.title.toLowerCase()?.includes(value.toLowerCase())
+      )
+    })
+    setNfts(filteredList)
+  }
+  return (
+    <Search onChange={handleChange} />
+    )
+```
+
+In `src\components\Search\Search.final.tsx`
+```tsx
+import React from 'react'
+
+type SearchProps = {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
+const Search = ({onChange}: SearchProps) => {
+  return <input type="text" className="input-search" onChange={onChange} />
+}
+
+export {Search}
+```
 
 ### Other cheatsheet
 https://react-typescript-cheatsheet.netlify.app/
