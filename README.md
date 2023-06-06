@@ -278,6 +278,7 @@ const user2 = updateUser(user1, {
 
 ## React
 
+
 ### Type children
 
 In `App.tsx`
@@ -352,4 +353,8 @@ const CardContent = ({nft}: CardContentProps) => {
 }
 export {CardContent}
 ```
+
+
+### Other cheatsheet
+https://react-typescript-cheatsheet.netlify.app/
 
