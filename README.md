@@ -386,6 +386,18 @@ const Search = ({onChange}: SearchProps) => {
 export {Search}
 ```
 
+### API calls
+
+```tsx
+type JSONResponse = {
+  data?: Array<Omit<nftType, 'fetchedAt' | 'createdAt'>>
+  elements?: number
+  errors?: Array<{message: string}>
+}
+...
+const {data, errors, elements}: JSONResponse = await resp.json()
+```
+
 ### Other cheatsheet
 https://react-typescript-cheatsheet.netlify.app/
 
