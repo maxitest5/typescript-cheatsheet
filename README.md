@@ -275,6 +275,7 @@ const user2 = updateUser(user1, {
   adress: 'Bali',
 })
 ```
+See https://www.typescriptlang.org/docs/handbook/utility-types.html for more info
 
 ## React
 
