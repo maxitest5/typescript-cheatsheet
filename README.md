@@ -399,6 +399,60 @@ type JSONResponse = {
 const {data, errors, elements}: JSONResponse = await resp.json()
 ```
 
+## Tests (Jest)
+
+### Basic
+
+```tsx
+  afterEach(() => {
+    DataBaseConnexion.getInstance().clearDb()
+  })
+
+describe('DataBaseConnexion:add', () => {
+  test('devrait avoir une taille de 1', () => {
+    DataBaseConnexion.getInstance().add('first')
+    expect(DataBaseConnexion.getInstance().getSize()).toBe(1)
+  })
+  test('devrait avoir une taille de 2', () => {
+    DataBaseConnexion.getInstance().add('first')
+    DataBaseConnexion.getInstance().add('second')
+    expect(DataBaseConnexion.getInstance().getSize()).toBe(2)
+  })
+})
+```
+### Basic react
+
+```tsx
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  const div = document.createElement('div')
+  document.body.append(div)
+
+  ReactDOM.render(<Hello name="John" />, div)
+
+  const envoyer = div.querySelector('input')
+  const label = (div?.firstChild as HTMLElement).querySelector('div')
+
+  expect(label?.textContent).toBe(`Bonjour John`)
+  envoyer?.click()
+  expect(label?.textContent).toBe(`Merci`)
+})
+```
+
+### React Testing Library
+
+```tsx
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  render(<Hello name="John" />)
+  const envoyer = screen.getByRole('button', {name: /envoyer/i})
+  const label = screen.getByRole('status')
+
+  expect(label?.textContent).toBe(`Bonjour John`)
+  fireEvent.click(envoyer as Element)
+  expect(label?.textContent).toBe(`Merci`)
+})
+```
+
+
 ### Other cheatsheet
 https://react-typescript-cheatsheet.netlify.app/
 
