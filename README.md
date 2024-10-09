@@ -2,15 +2,19 @@
 
 ## Init
 
-Make sur to have Node installed
+Make sur to have Node and npm installed
+`npm init -y`
 
 https://www.typescriptlang.org 
 
-Install Typescript globally   
-`npm install -g typescript`
+Install Typescript globally (add also ts-node)
+`npm install -g typescript ts-node`
 
-Compile ts code  
-`tsc sript.ts`
+Compile ts file to js file and run it
+`tsc sripts.ts
+node scripts.js`
+ or use
+ `ts-node scripts.ts`
 
 Create `tsconfig.json` file   
 `tsc --init`
@@ -56,7 +60,7 @@ const inputs = document.querySelectorAll('input')  //NodeListOf<HTMLInputElement
 
 ### Custom type
 ```tsx
-type Person = {
+interface Person = {
   name: string
   age: number
   friend: Person | undefined
