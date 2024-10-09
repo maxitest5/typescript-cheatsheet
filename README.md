@@ -26,7 +26,9 @@ Run auto compile with `watch`
 
 ### Basic types
 
-Possible types are : `number, boolean, string, object, any, undefined, Function`
+Primitive types: `number, boolean, string, undefined, void, symbol, null`
+Object types: `arrays, classes, objects, functions`
+default type, avoid at all cost : `any`
 
 ```tsx
 // Variable
@@ -108,8 +110,14 @@ function otherFn(fn: SomeBasicFunction, base: number): number {
   return fn(base)
 }
 ```
+## Objects
+```tsx
+let point: { x: number; y: number } = {
+  x: 10,
+  y: 20
+}
+```
 ## Classes
-
 ```tsx
 class Game {
   constructor(
@@ -157,7 +165,12 @@ displayText(
   }`,
 )
 ```
-
+## Functions
+```tsx
+const logNumber: (i: number) => void = (i: number) => {
+  console.log(i);
+};
+```
 ## Other
 
 ### Operators
@@ -196,6 +209,15 @@ type StudentDev = FrontEndDev | BackEndDev | FullStackDev
 ```
 
 Using `interface`
+```tsx
+interface Vehicule {
+  name: string;
+  year: Date;
+  broken: boolean;
+  summary(): string;
+}
+```
+
 ```tsx
 interface IDevelopper {
   name: string
